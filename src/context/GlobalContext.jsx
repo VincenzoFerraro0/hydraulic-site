@@ -1,3 +1,5 @@
+import { createContext } from "react"; 
+
 const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
