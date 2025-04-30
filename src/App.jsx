@@ -6,6 +6,8 @@ import DefaultLayout from "./layouts/DefaultLayout";
 
 // PAGES
 import HomePage from "./Pages/HomePage";
+import ContactUsPage from "./Pages/ContactUsPage";
+import AboutUsPage from "./Pages/AboutUsPage";
 
 // components
 function App() {
@@ -15,6 +17,8 @@ function App() {
                 <Routes>
                     <Route Component={DefaultLayout}>
                         <Route path="/" Component={HomePage}/>
+                        <Route path="/contact-us" Component={ContactUsPage}/>
+                        <Route path="/about-us" Component={AboutUsPage}/>
                     </Route>
                     {/* <Route path="*" Component={NotFound} /> */}
                 </Routes>

@@ -1,7 +1,11 @@
+import HeroCarousel from "../components/HeroCarousel";
+
 export default function HomePage() {
     return (
         <>
-            <h1>Home Page</h1>
+            <section>
+                <HeroCarousel/>
+            </section>
         </>
     )
 };
