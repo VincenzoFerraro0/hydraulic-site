@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom"
-import MainNav from "../components/MainNav"
-import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+import MainNav from "../components/MainNav";
+import ContactWidget from "../components/ContactWidget";
+import { useState, useEffect } from "react";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,8 +12,8 @@ export default function Header() {
             setIsScrolled(window.scrollY > 10);
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
@@ -22,22 +23,31 @@ export default function Header() {
             >
                 <div className="mx-auto max-w-[96%] flex items-center justify-between gap-8 px-2 sm:px-4 lg:px-6">
 
-                    {/* Logo */}
-                    <Link className="text-teal-600 flex-shrink-0" to={'/'}>
-                        <img
-                            className={`transition-all duration-300 ${isScrolled ? 'h-20' : 'h-20 lg:h-28'}`}
-                            src='/images/logos/logo-01.png'
-                            alt="Logo"
-                        />
-                    </Link>
+                    {/* Logo + Mobile Contact Icons */}
+                    <div className="flex items-center gap-3">
+                        <Link className="text-teal-600 flex-shrink-0" to={'/'}>
+                            <img
+                                className={`transition-all duration-300 ${isScrolled ? 'h-20' : 'h-20 lg:h-28'}`}
+                                src='/images/logos/logo-01.png'
+                                alt="Logo"
+                            />
+                        </Link>
 
-                    {/* Navigation */}
+                        
+                    </div>
+
+                    {/* Navigation & Menu Toggle */}
                     <div className="flex items-center gap-3">
                         <MainNav className="hidden lg:block" />
 
+                        {/* Mobile-only contact icons */}
+                        <div className="block lg:hidden ">
+                           <ContactWidget/>
+                        </div>
+
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="block rounded-smtransition lg:hidden"
+                            className="block rounded-sm transition lg:hidden"
                             aria-expanded={isMenuOpen}
                         >
                             {isMenuOpen ? (
@@ -83,12 +93,12 @@ export default function Header() {
 
                 {/* Sliding Panel */}
                 <div
-                    className={`fixed top-20 right-0 z-50 h-full w-[100%] bg-amber-600 shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+                    className={`p-4 fixed top-20 right-0 z-50 h-full w-[100%] bg-amber-600 shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
                         }`}
                 >
                     <MainNav mobile closeMenu={() => setIsMenuOpen(false)} />
                 </div>
             </div>
         </>
-    )
+    );
 }
