@@ -1,32 +1,49 @@
 import { Link } from "react-router-dom"
 import MainNav from "../components/MainNav"
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 10);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <header className="bg-white fixed top-0 inset-x-0 z-50 shadow-sm">
-            <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-                <Link className="block text-teal-600" to={'/'}>
-                    <img className="h-12" src='images/logo-01.png' alt="Logo" />
-                </Link>
+        <>
+            <header
+                className={`fixed top-0 left-0 right-0 z-50 w-full bg-white shadow-sm transition-all duration-300`}
+            >
+                <div className="mx-auto max-w-[96%] flex items-center justify-between gap-8 px-2 sm:px-4 lg:px-6">
 
-                <div className="flex flex-1 items-center justify-end md:justify-between">
-                    <MainNav className="hidden lg:block " />
+                    {/* Logo */}
+                    <Link className="text-teal-600 flex-shrink-0" to={'/'}>
+                        <img
+                            className={`transition-all duration-300 ${isScrolled ? 'h-20' : 'h-20 lg:h-28'}`}
+                            src='/images/logos/logo-01.png'
+                            alt="Logo"
+                        />
+                    </Link>
 
+                    {/* Navigation */}
                     <div className="flex items-center gap-3">
-                    
+                        <MainNav className="hidden lg:block" />
+
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="block rounded-sm bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
+                            className="block rounded-smtransition lg:hidden"
                             aria-expanded={isMenuOpen}
                         >
-                            <span className="sr-only">Toggle menu</span>
                             {isMenuOpen ? (
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
+                                    className="h-10 w-10  text-gray-500 "
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
@@ -37,7 +54,7 @@ export default function Header() {
                             ) : (
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
+                                    className="h-10 w-10 text-gray-500 "
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
@@ -49,16 +66,29 @@ export default function Header() {
                         </button>
                     </div>
                 </div>
-            </div>
+            </header>
 
-            {/* Mobile Menu */}
-            {isMenuOpen && (
-                <div className="md:hidden absolute top-16 inset-x-0 bg-white shadow-lg">
+            {/* Offset for fixed header */}
+            <div className={`${isScrolled ? 'h-20' : 'h-28'} lg:h-28`} />
+
+            {/* Mobile Slide-in Menu */}
+            <div className="lg:hidden">
+                {/* Overlay */}
+                {isMenuOpen && (
+                    <div
+                        className="fixed inset-0 z-40 bg-opacity-50 transition-opacity"
+                        onClick={() => setIsMenuOpen(false)}
+                    />
+                )}
+
+                {/* Sliding Panel */}
+                <div
+                    className={`fixed top-20 right-0 z-50 h-full w-[100%] bg-amber-600 shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+                        }`}
+                >
                     <MainNav mobile closeMenu={() => setIsMenuOpen(false)} />
-                    
-
                 </div>
-            )}
-        </header>
+            </div>
+        </>
     )
-};
+}

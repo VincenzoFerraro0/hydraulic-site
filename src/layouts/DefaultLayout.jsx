@@ -6,7 +6,7 @@ export default function DefaultLayout() {
     return (
         <>
             <Header />
-            <main>
+            <main className="pt-24 mx-auto max-w-[96%] px-4 sm:px-6 lg:px-8' ">
                 <Outlet />
             </main>
             <Footer/>
