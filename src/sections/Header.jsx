@@ -79,7 +79,7 @@ export default function Header() {
             </header>
 
             {/* Offset for fixed header */}
-            <div className={`${isScrolled ? 'h-20' : 'h-28'} lg:h-28`} />
+            <div/>
 
             {/* Mobile Slide-in Menu */}
             <div className="lg:hidden">

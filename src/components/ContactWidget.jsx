@@ -30,9 +30,14 @@ export default function ContactWidget() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={contact.name}
-                    className="bg-green-600 rounded-full p-3 hover:bg-green-700 transition duration-200 cursor-pointer flex items-center justify-center w-12 h-12" // Aggiungi flex e centra
+                    className="bg-green-600 rounded-full p-3 hover:bg-green-700 transition duration-200 cursor-pointer flex items-center justify-center w-12 h-12"
                 >
-                    <FontAwesomeIcon icon={contact.icon} className="text-white text-2xl" />
+                    <FontAwesomeIcon
+                        icon={contact.icon}
+                        className={`text-white ${
+                            contact.name === "WhatsApp" ? "text-3xl" : "text-2xl"
+                        }`}
+                    />
                 </a>
             ))}
         </div>

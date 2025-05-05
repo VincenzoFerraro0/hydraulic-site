@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
 *{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;   
+}
+
+main {
+    background-image: url(/images/img/Bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
