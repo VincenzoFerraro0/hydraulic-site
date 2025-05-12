@@ -1,5 +1,4 @@
-import { GlobalProvider } from "./context/GlobalContext";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 // layout
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -12,18 +11,14 @@ import AboutUsPage from "./Pages/AboutUsPage";
 // components
 function App() {
     return (
-        <BrowserRouter>
-            <GlobalProvider>
-                <Routes>
-                    <Route Component={DefaultLayout}>
-                        <Route path="/" Component={HomePage}/>
-                        <Route path="/contact-us" Component={ContactUsPage}/>
-                        <Route path="/about-us" Component={AboutUsPage}/>
-                    </Route>
-                    {/* <Route path="*" Component={NotFound} /> */}
-                </Routes>
-            </GlobalProvider>
-        </BrowserRouter>
+        <Routes>
+            <Route Component={DefaultLayout}>
+                <Route path="/" Component={HomePage} />
+                <Route path="/contatti" Component={ContactUsPage} />
+                <Route path="/chi-siamo" Component={AboutUsPage} />
+            </Route>
+            {/* <Route path="*" Component={NotFound} /> */}
+        </Routes>
     );
 }
 

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import ContactForm from "../components/ContactForm";
+import BannerIntervento from "../components/BannerIntervento";
 
 export default function ContactUsPage() {
     return (
@@ -45,8 +46,12 @@ export default function ContactUsPage() {
                 </a>
             </section>
 
-            <section className="text-center m-auto pt-10 px-4">
+            <section className="text-center m-auto pt-10 px-4 mb-8">
                 <ContactForm />
+            </section>
+
+            <section className="bg-amber-700">
+                <BannerIntervento />
             </section>
         </div>
     );
