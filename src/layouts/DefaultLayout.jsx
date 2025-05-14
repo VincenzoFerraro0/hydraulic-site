@@ -6,7 +6,7 @@ export default function DefaultLayout() {
     return (
         <>
             <Header />
-            <main className="mt-19">
+            <main className="mt-19 background-fixed">
                 <Outlet />
             </main>
             <Footer/>

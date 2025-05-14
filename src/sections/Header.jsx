@@ -7,10 +7,6 @@ export default function Header() {
 
     const {isMenuOpen, setIsMenuOpen, isScrolled} = useGlobalContext()
 
- 
-
-   
-
     return (
         <>
             <header

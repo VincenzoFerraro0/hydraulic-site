@@ -1,13 +1,13 @@
-import HeroCarousel from "../components/HeroCarousel";
-
-
+import EmergencyServices from "../components/EmergencyServices";
+import HeroBanner from "../components/HeroBanner";
 export default function HomePage() {
-   
-    
     return (
         <>
             <section>
-                <HeroCarousel/>
+                <HeroBanner/>
+            </section>
+            <section>
+                <EmergencyServices/>
             </section>
         </>
     )

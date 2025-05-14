@@ -8,6 +8,8 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./Pages/HomePage";
 import ContactUsPage from "./Pages/ContactUsPage";
 import AboutUsPage from "./Pages/AboutUsPage";
+import NotFound from "./Pages/NotFoundPage"
+
 
 // components
 function App() {
@@ -19,8 +21,9 @@ function App() {
                     <Route path="/" Component={HomePage} />
                     <Route path="/contatti" Component={ContactUsPage} />
                     <Route path="/chi-siamo" Component={AboutUsPage} />
+                    <Route path="*" Component={NotFound} />
                 </Route>
-                {/* <Route path="*" Component={NotFound} /> */}
+                
             </Routes>
         </>
 

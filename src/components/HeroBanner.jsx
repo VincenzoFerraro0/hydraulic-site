@@ -1,7 +1,7 @@
 import caricature from '../assets/img/manwork-01.svg'
 import CTAButton from './CTAButton';
 
-export default function HeroCarousel() {
+export default function HeroBanner() {
     return (
         <section className="bg-[#F9FAFB] py-16">
             <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-10">
