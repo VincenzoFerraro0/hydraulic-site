@@ -1,20 +1,15 @@
 import { Link } from "react-router-dom";
 import MainNav from "../components/MainNav";
 import ContactWidget from "../components/ContactWidget";
-import { useState, useEffect } from "react";
+import { useGlobalContext } from "../context/GlobalContext";
 
 export default function Header() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 10);
-        };
+    const {isMenuOpen, setIsMenuOpen, isScrolled} = useGlobalContext()
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+ 
+
+   
 
     return (
         <>
@@ -64,7 +59,7 @@ export default function Header() {
                             ) : (
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="h-10 w-10 text-gray-500 "
+                                    className="h-10 w-10 text-gray-500 cursor-pointer "
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"

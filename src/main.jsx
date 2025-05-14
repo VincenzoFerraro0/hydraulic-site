@@ -5,10 +5,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { GlobalProvider } from "./context/GlobalContext";
 
 createRoot(document.getElementById('root')).render(
-  <GlobalProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <GlobalProvider>
       <App />
-    </BrowserRouter>
-  </GlobalProvider>
+    </GlobalProvider>
+  </BrowserRouter>
+
 
 )

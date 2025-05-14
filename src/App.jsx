@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 // layout
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -11,14 +12,18 @@ import AboutUsPage from "./Pages/AboutUsPage";
 // components
 function App() {
     return (
-        <Routes>
-            <Route Component={DefaultLayout}>
-                <Route path="/" Component={HomePage} />
-                <Route path="/contatti" Component={ContactUsPage} />
-                <Route path="/chi-siamo" Component={AboutUsPage} />
-            </Route>
-            {/* <Route path="*" Component={NotFound} /> */}
-        </Routes>
+        <>
+            <ScrollToTop />
+            <Routes>
+                <Route Component={DefaultLayout}>
+                    <Route path="/" Component={HomePage} />
+                    <Route path="/contatti" Component={ContactUsPage} />
+                    <Route path="/chi-siamo" Component={AboutUsPage} />
+                </Route>
+                {/* <Route path="*" Component={NotFound} /> */}
+            </Routes>
+        </>
+
     );
 }
 

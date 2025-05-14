@@ -1,4 +1,4 @@
-import caricature from '../assets/img/10173253_8481.svg';
+import caricature from '../assets/img/manwork-01.svg'
 import CTAButton from './CTAButton';
 
 export default function HeroCarousel() {
@@ -8,7 +8,7 @@ export default function HeroCarousel() {
                 {/* Immagine */}
                 <figure className="w-full md:w-1/2 flex justify-center">
                     <img 
-                        src={caricature} 
+                        src={caricature}
                         alt="Tecnico che ripara dispositivi" 
                         className="max-w-xs md:max-w-md w-full h-auto"
                     />
